@@ -4,7 +4,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  static const String _title = 'Flutter Stateful Clicker Counter';
+  static const String _title = 'Dulcería Alegrías';
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -13,80 +13,125 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-  // This class is the configuration for the state.
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('Flutter Demo Click Counter'),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: TextStyle(fontSize: 25),
-            ),
-          ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Dulcería Alegrías'),
+          backgroundColor: const Color(0xffb80303),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+        body: ListView(
+          children: <Widget>[
+            miCard(),
+            miCardImage(),
+            miCardDesign(),
+            miCard1(),
+          ],
+        ));
   }
 }
 
+Card miCard() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(15),
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        const ListTile(
+          contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+          title: Text('Chocolates'),
+          subtitle: Text(
+              'Este es el subtitulo del card. Aqui podemos colocar descripción de este card.'),
+          leading: Image(
+            image: AssetImage('images/carlosV.jpg'),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            TextButton(onPressed: () => {}, child: const Text('Aceptar')),
+            TextButton(onPressed: () => {}, child: const Text('Cancelar'))
+          ],
+        )
+      ],
+    ),
+  );
+}
+
+Card miCardImage() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(15),
+    shadowColor: Colors.red,
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        const Image(
+          image: NetworkImage(
+              'https://media.istockphoto.com/id/1126477096/es/foto/dulces-mexicanos-artesanales-a-mano.jpg?s=1024x1024&w=is&k=20&c=NGqw0EIECDws4MpLv7So2Kn_MIjj1c095Bsujt8Yj5A='),
+        ),
+        Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Dulces Mexicanos'),
+        ),
+      ],
+    ),
+  );
+}
+
+Card miCard1() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(15),
+    shadowColor: Colors.red,
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        const Image(
+          image: NetworkImage(
+              'https://editorialtelevisa.brightspotcdn.com/wp-content/uploads/2019/02/Recetas-de-pasteles.jpg'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Pasteles'),
+        ),
+      ],
+    ),
+  );
+}
+
+Card miCardDesign() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(15),
+    shadowColor: Colors.red,
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        const Image(
+          image: NetworkImage(
+              'https://www.elsoldedurango.com.mx/local/hei5o-pinatas/ALTERNATES/LANDSCAPE_768/Pi%C3%B1atas'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Piñatas'),
+        ),
+      ],
+    ),
+  );
+}
